@@ -1,0 +1,19 @@
+POST https://api-astro-ada15ava-grupal-dev-thjc.3.us-1.fl0.io/api/charts
+Content-Type: application/json
+
+{
+"name": "Gabriel Alberini",
+"birthdate": "12-12-12",
+"time": 2123,
+"asc": 214,
+"sun": 347,
+"moon": 332,
+"mercury": 344,
+"venus": 341,
+"mars": 180,
+"jupiter": 310,
+"saturn": 7,
+"uranus": 306,
+"neptune": 299,
+"pluto": 245
+}
