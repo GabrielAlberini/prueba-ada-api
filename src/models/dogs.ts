@@ -3,6 +3,8 @@ import { indexDb } from "../db";
 import dotenv from "dotenv";
 dotenv.config();
 
+console.log("path file", indexDb);
+
 class DogsModel {
   static getAllDogs = async () => {
     try {
@@ -19,7 +21,7 @@ class DogsModel {
       await jsonfile.writeFile(indexDb, db);
       return { message: "Created" };
     } catch (error) {
-      return { ERROR_TO_ADD: process.cwd() + config.filePath };
+      return { ERROR_TO_ADD: indexDb + "/dogs.json" };
     }
   };
 }
