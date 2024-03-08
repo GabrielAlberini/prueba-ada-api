@@ -1,4 +1,5 @@
 import jsonfile from "jsonfile";
+import db from "../db/dogs.json";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -23,7 +24,8 @@ class DogsModel {
 
   static createNewDog = async (dog: any) => {
     try {
-      await jsonfile.writeFile(process.cwd() + config.filePath, dog);
+      const newDog = db.push(dog);
+      await jsonfile.writeFile(process.cwd() + config.filePath, db);
       return { message: "Created" };
     } catch (error) {
       return { ERROR_TO_ADD: process.cwd() + config.filePath };

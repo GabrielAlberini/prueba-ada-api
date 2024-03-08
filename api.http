@@ -6,3 +6,5 @@ Content-Type: application/json
   "age": 2,
   "colors": ["brown"]
 }
+### Get dogs
+GET https://prueba-ada-api-dev-atqk.3.us-1.fl0.io/api/dogs
