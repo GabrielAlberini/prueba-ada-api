@@ -7,4 +7,4 @@ Content-Type: application/json
   "colors": ["brown"]
 }
 ### Get dogs
-GET https://prueba-ada-api-dev-atqk.3.us-1.fl0.io/api/dogs
+GET https://prueba-ada-api-dev-kzrd.3.us-1.fl0.io/api/dogs

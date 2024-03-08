@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === "production") {
 
 console.log(
   "Ruta completa antes de la lectura/escritura:",
-  process.env.NODE_env
+  process.env.NODE_ENV
 );
 
 class DogsModel {
