@@ -1,40 +1,22 @@
 import jsonfile from "jsonfile";
-import db from "../db/dogs.json";
+import { indexDb } from "../db";
 import dotenv from "dotenv";
 dotenv.config();
-
-const config = {
-  filePath: "/src/db/dogs.json",
-};
-
-// Configuración de producción
-if (process.env.NODE_ENV === "production") {
-  config.filePath = "/dist/db/dogs.json";
-}
-
-console.log(
-  "Ruta completa antes de la lectura/escritura:",
-  process.env.NODE_ENV
-);
 
 class DogsModel {
   static getAllDogs = async () => {
     try {
-      return await jsonfile.readFile(process.cwd() + config.filePath);
+      return await jsonfile.readFile(indexDb + "/dogs.json");
     } catch (error) {
-      return { ERROR_TO_READ: process.cwd() + config.filePath };
+      return { ERROR_TO_READ: indexDb + "/dogs.json" };
     }
   };
 
   static createNewDog = async (dog: any) => {
     try {
-      // Mover la actualización de la ruta antes de operaciones en db
-      if (process.env.NODE_ENV === "production") {
-        config.filePath = "/dist/db/dogs.json";
-      }
-
+      const db = await jsonfile.readFile(indexDb + "/dogs.json");
       db.push(dog);
-      await jsonfile.writeFile(process.cwd() + config.filePath, db);
+      await jsonfile.writeFile(indexDb, db);
       return { message: "Created" };
     } catch (error) {
       return { ERROR_TO_ADD: process.cwd() + config.filePath };
