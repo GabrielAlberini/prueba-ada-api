@@ -8,9 +8,6 @@ const config = {
 };
 
 // Configuración de producción
-if (process.env.NODE_ENV === "production") {
-  config.filePath = "/dist/db/dogs.json";
-}
 
 console.log(config.filePath);
 class DogsModel {
@@ -24,7 +21,10 @@ class DogsModel {
 
   static createNewDog = async (dog: any) => {
     try {
-      const newDog = db.push(dog);
+      if (process.env.NODE_ENV === "production") {
+        config.filePath = "/dist/db/dogs.json";
+      }
+      db.push(dog);
       await jsonfile.writeFile(process.cwd() + config.filePath, db);
       return { message: "Created" };
     } catch (error) {
