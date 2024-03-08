@@ -9,6 +9,10 @@ app.use(cors());
 
 app.use("/api", routesDogs);
 
+app.use("*", (req, res) => {
+  res.status(404).json({ message: "Not found" });
+});
+
 const PORT = process.env.PORT ?? 1234;
 
 app.listen(PORT, () => {
