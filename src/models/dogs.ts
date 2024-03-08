@@ -12,7 +12,10 @@ if (process.env.NODE_ENV === "production") {
   config.filePath = "/dist/db/dogs.json";
 }
 
-console.log(config.filePath);
+console.log(
+  "Ruta completa antes de la lectura/escritura:",
+  process.env.NODE_env
+);
 
 class DogsModel {
   static getAllDogs = async () => {
