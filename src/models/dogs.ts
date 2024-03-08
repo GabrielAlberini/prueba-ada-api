@@ -11,6 +11,7 @@ if (process.env.NODE_ENV === "production") {
   config.filePath = "/dist/db/dogs.json";
 }
 
+console.log(config.filePath);
 class DogsModel {
   static getAllDogs = async () => {
     try {
