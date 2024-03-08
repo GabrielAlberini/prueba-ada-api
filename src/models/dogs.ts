@@ -9,7 +9,7 @@ const config = {
 
 // Configuración de producción
 if (process.env.NODE_ENV === "production") {
-  config.filePath = "/workspace/dist/db/dogs.json";
+  config.filePath = "/dist/db/dogs.json";
 }
 
 console.log(
