@@ -16,7 +16,16 @@ class DogsModel {
     try {
       return await jsonfile.readFile(process.cwd() + config.filePath);
     } catch (error) {
-      return { message: process.cwd() + config.filePath };
+      return { ERROR_TO_READ: process.cwd() + config.filePath };
+    }
+  };
+
+  static createNewDog = async (dog: any) => {
+    try {
+      await jsonfile.writeFile(process.cwd() + config.filePath, dog);
+      return { message: "Created" };
+    } catch (error) {
+      return { ERROR_TO_ADD: process.cwd() + config.filePath };
     }
   };
 }
