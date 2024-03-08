@@ -1,11 +1,22 @@
-import db from "../db/dogs.json";
+import jsonfile from "jsonfile";
+import dotenv from "dotenv";
+dotenv.config();
 
-abstract class DogsModel {
-  static getAllDogs = () => {
+const config = {
+  filePath: "/src/db/dogs.json",
+};
+
+// Configuración de producción
+if (process.env.NODE_ENV === "production") {
+  config.filePath = "/dist/db/dogs.json";
+}
+
+class DogsModel {
+  static getAllDogs = async () => {
     try {
-      return db;
+      return await jsonfile.readFile(process.cwd() + config.filePath);
     } catch (error) {
-      return { message: error };
+      return { message: process.cwd() + config.filePath };
     }
   };
 }
